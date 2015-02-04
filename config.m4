@@ -61,5 +61,5 @@ if test "$PHP_GEO" != "no"; then
   dnl
   dnl PHP_SUBST(GEO_SHARED_LIBADD)
 
-  PHP_NEW_EXTENSION(geo, geo.c, $ext_shared)
+  PHP_NEW_EXTENSION(geo, geo.cpp, $ext_shared)
 fi
