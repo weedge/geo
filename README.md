@@ -17,7 +17,7 @@
 
 1.4. 用0-9、b-z（去掉a, i, l, o）这32个字母进行base32编码，得到(30.63578,104.031601)的编码为wm3yr31d2524。  
 
-wiki: (http://en.wikipedia.org/wiki/Geohash)[http://en.wikipedia.org/wiki/Geohash]
+wiki: [http://en.wikipedia.org/wiki/Geohash](http://en.wikipedia.org/wiki/Geohash)
 
 ### 安装
 1. `git clone https://github.com/weedge/geo.git`
