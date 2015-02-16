@@ -14,7 +14,6 @@ dnl [  --with-geo             Include geo support])
 dnl Otherwise use enable:
 
 PHP_ARG_ENABLE(geo, whether to enable geo support,
-Make sure that the comment is aligned:
 [  --enable-geo           Enable geo support])
 
 if test "$PHP_GEO" != "no"; then
@@ -43,7 +42,7 @@ if test "$PHP_GEO" != "no"; then
   dnl fi
 
   dnl # --with-geo -> add include path
-  dnl PHP_ADD_INCLUDE($GEO_DIR/include)
+  PHP_ADD_INCLUDE(./libgeohash)
 
   dnl # --with-geo -> check for lib and symbol presence
   dnl LIBNAME=geo # you may want to change this
@@ -61,5 +60,5 @@ if test "$PHP_GEO" != "no"; then
   dnl
   dnl PHP_SUBST(GEO_SHARED_LIBADD)
 
-  PHP_NEW_EXTENSION(geo, geo.cpp, $ext_shared)
+  PHP_NEW_EXTENSION(geo, geo.cpp libgeohash/geohash.c, $ext_shared)
 fi

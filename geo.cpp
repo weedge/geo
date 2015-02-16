@@ -27,6 +27,7 @@
 #include "ext/standard/info.h"
 #include "php_geo.h"
 
+#include "geohash.h"
 #include <string>
 
 #define PI 3.14159265359
@@ -48,6 +49,8 @@ static int le_geo;
  * Every user visible function must have an entry in geo_functions[].
  */
 const zend_function_entry geo_functions[] = {
+	PHP_FE(geohash_decode,	NULL)
+	PHP_FE(geohash_encode,	NULL)
 	PHP_FE(geo_distance,	NULL)
 	PHP_FE(geo_info,	NULL)
 	PHP_FE_END	/* Must be the last line in geo_functions[] */
@@ -156,6 +159,66 @@ PHP_MINFO_FUNCTION(geo)
 /* }}} */
 
 /* Every user-visible function in PHP should document itself in the source */
+
+/*geohash_encode(double lat, double lng, int precision)*/
+PHP_FUNCTION(geohash_encode)
+{
+    double lat,lng;
+    int precision = 12;
+
+	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "dd|l", &lat,&lng,&precision) == FAILURE) {
+        return;
+    }
+
+    if(lat>90.0 || lat<-90.0){
+        php_error_docref(NULL TSRMLS_CC, E_NOTICE, "Argument #1 range from -90.0 to 90.0");
+        return;
+    }
+    if(lng>180.0 || lng<-180.0){
+        php_error_docref(NULL TSRMLS_CC, E_NOTICE, "Argument #2 range from -180.0 to 180.0");
+        return;
+    }
+    if(precision!=0){
+        if(precision<0){
+            php_error_docref(NULL TSRMLS_CC, E_NOTICE, "Argument #3 should be a positive number");
+            return;
+        }
+    }else{
+        precision=12;
+    }
+    
+    char* hash = geohash_encode(lat,lng,precision);
+    int hash_len = strlen(hash);
+
+    RETURN_STRINGL(hash,hash_len,1);
+}
+
+/*geohash_decode(char* hash)*/
+PHP_FUNCTION(geohash_decode)
+{
+    char* hash;
+    int hash_len;
+
+	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s", &hash,&hash_len) == FAILURE) {
+        return;
+    }
+
+    GeoCoord coord = geohash_decode(hash);
+
+    array_init(return_value);
+    add_assoc_double(return_value,"lat",coord.latitude);
+    add_assoc_double(return_value,"lng",coord.longitude);
+
+    add_assoc_double(return_value,"north",coord.north);
+    add_assoc_double(return_value,"east",coord.east);
+    add_assoc_double(return_value,"south",coord.longitude);
+    add_assoc_double(return_value,"west",coord.west);
+
+
+    //zend_printf('geohash_decode');
+}
+
+
 /* {{{ proto string geo_distance(double lat1,double lng1,double lat2,double lng2)
    Return a string to confirm that the module is compiled in */
 PHP_FUNCTION(geo_distance)

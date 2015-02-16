@@ -44,8 +44,11 @@ PHP_RINIT_FUNCTION(geo);
 PHP_RSHUTDOWN_FUNCTION(geo);
 PHP_MINFO_FUNCTION(geo);
 
+PHP_FUNCTION(geohash_encode);
+PHP_FUNCTION(geohash_decode);
 PHP_FUNCTION(geo_distance);
 PHP_FUNCTION(geo_info);
+
 
 /* 
   	Declare any global variables you may need between the BEGIN
