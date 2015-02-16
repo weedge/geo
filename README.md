@@ -29,3 +29,4 @@
 
 
 ### 测试实例
+运行：·php -f geo_example.php·
