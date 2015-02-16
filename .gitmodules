@@ -1,0 +1,3 @@
+[submodule "libgeohash"]
+	path = libgeohash
+	url = git@github.com:weedge/libgeohash.git
