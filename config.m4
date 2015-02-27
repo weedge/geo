@@ -18,7 +18,7 @@ PHP_ARG_ENABLE(geo, whether to enable geo support,
 
 if test "$PHP_GEO" != "no"; then
   PHP_REQUIRE_CXX() dnl 通知make 使用g++
-  PHP_ADD_LIBRARY(stdc++,1,EXTRAL_LAFLAGS) dnl c++标准(应该是98吧)
+  PHP_ADD_LIBRARY(stdc++,1,EXTRAL_LAFLAGS) dnl c++标准
   dnl Write more examples of tests here...
 
   dnl # --with-geo -> check with-path
