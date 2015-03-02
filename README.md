@@ -23,8 +23,8 @@ wiki: [http://en.wikipedia.org/wiki/Geohash](http://en.wikipedia.org/wiki/Geohas
 1. `git clone https://github.com/weedge/geo.git`
 2. `cd geo && git submodule init && git submodule update && phpize && ./configure && make && make install`
 3. 将生成的geo.so拷贝到PHP 扩展模块文件夹中,然后修改php.ini配置文件,加入扩展,比如：  
+        :geo  
         extension_dir="/usr/lib64/php/modules/"  
-        geo  
         extension=geo.so
 4. `php -m | grep geo` 查看是否有geo模块
 
