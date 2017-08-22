@@ -3,7 +3,7 @@
 
 ### geohash编码算法
 
-比如：成都永丰立交经纬度(30.63578,104.031601)
+比如：经纬度(39.92324,104.031601)
 
 1.1. 纬度范围(-90, 90)平分成两个区间(-90, 0)、(0, 90)， 如果目标纬度位于前一个区间，则编码为0，否则编码为1。  
 由于30.625265属于(0, 90)，所以取编码为1。  
@@ -31,3 +31,6 @@ wiki: [http://en.wikipedia.org/wiki/Geohash](http://en.wikipedia.org/wiki/Geohas
 
 ### 测试实例
 运行：`php -f geo_example.php`
+
+### 应用参考
+[基于GeoHash+Redis实现LBS附近地点搜索](http://wenhao.github.io/2015/10/21/%E5%9F%BA%E4%BA%8EGeoHash+Redis%E5%AE%9E%E7%8E%B0LBS%E9%99%84%E8%BF%91%E5%9C%B0%E7%82%B9%E6%90%9C%E7%B4%A2/)
