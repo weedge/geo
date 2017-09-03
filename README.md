@@ -33,4 +33,4 @@ wiki: [http://en.wikipedia.org/wiki/Geohash](http://en.wikipedia.org/wiki/Geohas
 运行：`php -f geo_example.php`
 
 ### 应用参考
-[基于GeoHash+Redis实现LBS附近地点搜索](http://wenhao.github.io/2015/10/21/%E5%9F%BA%E4%BA%8EGeoHash+Redis%E5%AE%9E%E7%8E%B0LBS%E9%99%84%E8%BF%91%E5%9C%B0%E7%82%B9%E6%90%9C%E7%B4%A2/)
+[基于GeoHash+Redis实现LBS附近地点搜索](https://wenhao.github.io/2015/10/21/%E5%9F%BA%E4%BA%8EGeoHash+Redis%E5%AE%9E%E7%8E%B0LBS%E9%99%84%E8%BF%91%E5%9C%B0%E7%82%B9%E6%90%9C%E7%B4%A2/)
